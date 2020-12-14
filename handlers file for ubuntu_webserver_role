@@ -1,0 +1,6 @@
+---
+# handlers file for ubuntu_webserver_role
+- name: "RestartService"
+  service:
+      name: "{{ package_name }}"
+      state: restarted
