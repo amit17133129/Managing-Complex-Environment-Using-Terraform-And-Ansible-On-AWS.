@@ -1,0 +1,16 @@
+- hosts: "{{ redhat_ip }}"
+  remote_user: ec2-user
+
+  vars_files:
+    - ipaddress.yml
+    - "{{ ansible_facts['distribution'] }}-{{ ansible_facts['distribution_major_version'] }}.yml"
+  roles:
+  - role: "/root/dynamic_vars/webserver_roles/redhat_webserver_role"
+- hosts: "{{ ubuntu_ip }}"
+  remote_user: ubuntu
+
+  vars_files:
+    - ipaddress.yml
+    - "{{ ansible_facts['distribution'] }}-{{ ansible_facts['distribution_major_version'] }}.yml"
+  roles:
+  - role: "/root/dynamic_vars/webserver_roles/ubuntu_webserver_role"
